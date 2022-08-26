@@ -44,6 +44,12 @@ describe('Name of the group', () => {
     expect(screen.getAllByText(/body/i)).toHaveLength(3);
   });
 
+  test('should not render posts', () => {
+    render(<Posts {...mock} />);
+
+    expect(screen.queryByRole('heading', { name: /title/i })).toHaveLength(0);
+  });
+
   test('should match snapshot', () => {
     const { container } = render(<Posts />);
 
